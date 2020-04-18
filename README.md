@@ -2,6 +2,9 @@
 Command line application for scoring bowling games.
 Games should be provided as an input file.
 
+
+The program runs from the command-line and take a text file as input.
+
 ## Usage
 `java -jar bowling.jar`
 
