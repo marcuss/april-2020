@@ -27,4 +27,7 @@ public class Game {
                 "turns=" + Arrays.toString(turns) +
                 '}';
     }
+
+    public void roll(int i) {
+    }
 }

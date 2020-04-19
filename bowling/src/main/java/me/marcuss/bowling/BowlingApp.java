@@ -5,6 +5,7 @@ import me.marcuss.bowling.domain.Game;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 public class BowlingApp {
 
@@ -18,8 +19,8 @@ public class BowlingApp {
             throw new IllegalArgumentException("No readable file: " + args[0]);
         }
 
-        Game game = GameFileParser.readBowlingFile(file);
+        Map<String, Game> games = GameFileParser.readBowlingFile(file);
 
-        System.out.println(game);
+        games.forEach((k,v)->System.out.println( k + ": " + v));
     }
 }
