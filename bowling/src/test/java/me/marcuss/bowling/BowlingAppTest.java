@@ -3,8 +3,6 @@ package me.marcuss.bowling;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.NoSuchFileException;
-
 class BowlingAppTest {
 
     @Test
@@ -16,7 +14,7 @@ class BowlingAppTest {
 
     @Test
     public void shouldThrowNoSuchFileException() {
-        Assertions.assertThrows(NoSuchFileException.class, () -> {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BowlingApp.main(new String[]{"nonexistentfile.txt"});
         });
     }
