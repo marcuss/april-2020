@@ -5,9 +5,11 @@ import java.util.Arrays;
 public class Game {
 
     private Turn[] turns;
+    private int totalScore;
 
     public Game() {
         turns = new Turn[10];
+        totalScore = 0;
         for (int i = 0; i < turns.length - 1; i++) {
             turns[i] = new Turn();
         }
@@ -30,9 +32,10 @@ public class Game {
     }
 
     public void roll(int i) {
+        totalScore += i;
     }
 
     public int score() {
-        return 0;
+        return totalScore;
     }
 }
