@@ -101,6 +101,15 @@ class GameTest {
         );
     }
 
+    @Test
+    public void canScoreAllSpares() {
+        rollHelper(21,5);
+        assertThat(
+                game.score(),
+                is(150)
+        );
+    }
+
     private void rollAStrike() {
         game.roll(10);
     }
