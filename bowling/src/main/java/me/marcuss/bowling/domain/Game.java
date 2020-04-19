@@ -24,20 +24,20 @@ public class Game {
 
     public int score() {
         int score = 0;
-        int currentTurn = 0;
-        for (int frame = 0; frame < 10; frame++) {
-            if (rolls[currentTurn] == 10) {
-                score += 10 + nextTwoRollsScore(currentTurn);
+        int firstRollInTurn = 0;
+        for (int turn = 0; turn < 10; turn++) {
+            if (isAStrike(firstRollInTurn)) {
+                score += 10 + nextTwoRollsScore(firstRollInTurn);
                 //On strikes a turn only have one roll
-                currentTurn += 1;
+                firstRollInTurn ++;
             }
-            else if (isSpare(currentTurn)) {
+            else if (isSpare(firstRollInTurn)) {
                 //spare
-                score += 10 + nextRollScore(currentTurn);
-                currentTurn += 2;
+                score += 10 + nextRollScore(firstRollInTurn);
+                firstRollInTurn += 2;
             } else {
-                score += currentTurnRollsScore(currentTurn);
-                currentTurn += 2;
+                score += currentTurnRollsScore(firstRollInTurn);
+                firstRollInTurn += 2;
             }
 
         }
@@ -54,6 +54,10 @@ public class Game {
 
     private int nextTwoRollsScore(int currentTurn) {
         return rolls[currentTurn + 1] + rolls[currentTurn + 2];
+    }
+
+    private boolean isAStrike(int currentTurn) {
+        return rolls[currentTurn] == 10;
     }
 
     private boolean isSpare(int currentBallIndex) {

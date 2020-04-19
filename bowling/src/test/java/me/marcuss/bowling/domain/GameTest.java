@@ -92,6 +92,15 @@ class GameTest {
         );
     }
 
+    @Test
+    public void canScorePerfectGame() {
+        rollHelper(12,10);
+        assertThat(
+                game.score(),
+                is(300)
+        );
+    }
+
     private void rollAStrike() {
         game.roll(10);
     }
