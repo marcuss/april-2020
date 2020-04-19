@@ -11,19 +11,13 @@ class GameTest {
     private Game game;
 
     @BeforeEach
-    public void stup() {
+    public void setup() {
         game = new Game();
-    }
-
-    @Test
-    public void canRoll() {
-        game.roll(0);
     }
 
     @Test
     public void canScoreWorstGame() {
         rollHelper(20, 0);
-
         assertThat(
                 game.score(),
                 is(0)
@@ -37,6 +31,74 @@ class GameTest {
                 game.score(),
                 is(20)
         );
+    }
+
+    @Test
+    public void canScoreAll3() {
+        rollHelper(20, 3);
+        assertThat(
+                game.score(),
+                is(60)
+        );
+    }
+
+    @Test
+    public void canScoreStartingWithSpare() {
+        rollASpare();
+
+        game.roll(6);
+        game.roll(1);
+
+        rollHelper(16, 1);
+
+        assertThat(
+                game.score(),
+                is(16 + 7 + 16)
+        );
+    }
+
+    @Test
+    public void canScoreEndingWithSpare() {
+        rollHelper(18, 1);
+        rollASpare();
+        game.roll(1);
+        assertThat(
+                game.score(),
+                is(18 + 11)
+        );
+    }
+
+    @Test
+    public void canScoreStartingWithAStrike() {
+        rollAStrike();
+        game.roll(5);
+        game.roll(3);
+        rollHelper(16, 1);
+        assertThat(
+                game.score(),
+                is(18 + 8 + 16)
+        );
+    }
+
+    @Test
+    public void canScoreEndingWithStrike() {
+        rollHelper(18, 1);
+        rollAStrike();
+        game.roll(5);
+        game.roll(4);
+        assertThat(
+                game.score(),
+                is(18 + 19)
+        );
+    }
+
+    private void rollAStrike() {
+        game.roll(10);
+    }
+
+    private void rollASpare() {
+        game.roll(5);
+        game.roll(5);
     }
 
     private void rollHelper(int n, int pins) {
