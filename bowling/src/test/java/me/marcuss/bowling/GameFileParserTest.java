@@ -1,5 +1,6 @@
 package me.marcuss.bowling;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,10 +15,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class GameFileParserTest {
 
     private Path sampleFile;
+    private Path negativeRollsFile;
+    private Path invalidRollsFile;
 
     @BeforeEach
     public void setup() {
         sampleFile = Paths.get("src/test/resources/testfile.txt");
+        negativeRollsFile = Paths.get("src/test/resources/negativeinputs.txt");
+        invalidRollsFile = Paths.get("src/test/resources/invalidinputs.txt");
     }
 
     @Test
@@ -36,5 +41,17 @@ class GameFileParserTest {
         );
     }
 
+    @Test
+    void throwsExceptionOnNegativeRolls() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            GameFileParser.readBowlingFile(negativeRollsFile).size();
+        });
+    }
 
+    @Test
+    void throwsExceptionOnInvalidRolls() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            GameFileParser.readBowlingFile(invalidRollsFile).size();
+        });
+    }
 }

@@ -41,8 +41,19 @@ public class GameFileParser {
 
     private static void rollTurn(String pins, Game playerGame) {
         if (NumberUtils.isCreatable(pins)) {
-            playerGame.roll(Integer.parseInt(pins));
+            int pinsParsed = Integer.parseInt(pins);
+            if (pinsParsed < 0) {
+                throw new IllegalArgumentException(
+                        pinsParsed + " is not a valid roll"
+                );
+            }
+            playerGame.roll(pinsParsed);
         } else {
+            if (!"F".equalsIgnoreCase(pins)) {
+                throw new IllegalArgumentException(
+                        pins + " is not a valid roll"
+                );
+            }
             playerGame.roll(0);
         }
     }
