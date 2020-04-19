@@ -1,5 +1,6 @@
 package me.marcuss.bowling.domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -108,6 +109,13 @@ class GameTest {
                 game.score(),
                 is(150)
         );
+    }
+
+    @Test
+    public void shouldTrowExceptionOnExtraRolls() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            rollHelper(22,5);
+        });
     }
 
     private void rollAStrike() {

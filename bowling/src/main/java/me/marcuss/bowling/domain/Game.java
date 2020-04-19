@@ -19,6 +19,8 @@ public class Game {
     }
 
     public void roll(int pins) {
+        if (currentRoll == 20)
+            throw new IllegalArgumentException("Too many rolls");
         this.rolls[currentRoll++] = pins;
     }
 
