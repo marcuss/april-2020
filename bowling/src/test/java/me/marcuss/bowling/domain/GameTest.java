@@ -112,9 +112,16 @@ class GameTest {
     }
 
     @Test
-    public void shouldTrowExceptionOnExtraRolls() {
+    public void shouldThrowExceptionOnExtraRollsInAllSparesGame() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             rollHelper(22,5);
+        });
+    }
+
+    @Test
+    public void shouldThrowExceptionOnExtraRollInPerfectGame() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            rollHelper(13,10);
         });
     }
 
