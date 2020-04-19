@@ -3,7 +3,8 @@ package me.marcuss.bowling.domain;
 import java.util.Arrays;
 
 public class Game {
-    private Turn turns[];
+
+    private Turn[] turns;
 
     public Game() {
         turns = new Turn[10];
@@ -29,5 +30,9 @@ public class Game {
     }
 
     public void roll(int i) {
+    }
+
+    public int score() {
+        return 0;
     }
 }
