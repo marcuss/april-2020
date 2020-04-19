@@ -1,4 +1,4 @@
-package main.java.me.marcuss.bowling;
+package me.marcuss.bowling.domain;
 
 public class TenthTurn extends Turn {
     private Roll thirdRoll;
