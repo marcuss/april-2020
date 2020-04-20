@@ -34,7 +34,7 @@ public class GameFileParser {
     private static Game getGameByPlayerName(Map<String, Game> games, String playerName) {
         Game playerGame = games.get(playerName);
         if (playerGame == null) {
-            playerGame = new Game();
+            playerGame = new Game(playerName);
         }
         return playerGame;
     }

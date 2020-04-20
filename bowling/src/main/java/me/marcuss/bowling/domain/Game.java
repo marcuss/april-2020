@@ -7,10 +7,14 @@ public class Game {
     private int[] rolls;
     private int currentRoll;
     private int MAX_ROLL;
+    private String playerName;
+    private int[] scoresByFrame;
 
-    public Game() {
+    public Game(String playerName) {
         rolls = new int[21];
+        scoresByFrame = new int[10];
         MAX_ROLL = 21;
+        this.playerName = playerName;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class Game {
                 score += currentTurnRollsScore(firstRollInTurn);
                 firstRollInTurn += 2;
             }
-
+            scoresByFrame[turn] = score;
         }
         return score;
     }
@@ -71,5 +75,21 @@ public class Game {
 
     private boolean isSpare(int currentBallIndex) {
         return rolls[currentBallIndex] + rolls[currentBallIndex+1] == 10;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public int[] getRolls() {
+        return rolls;
+    }
+
+    public int[] getScoresByFrame() {
+        return scoresByFrame;
     }
 }

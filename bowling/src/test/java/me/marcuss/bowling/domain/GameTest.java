@@ -1,5 +1,6 @@
 package me.marcuss.bowling.domain;
 
+import me.marcuss.bowling.AbstractGameTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,13 +8,11 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class GameTest {
-
-    private Game game;
+class GameTest extends AbstractGameTest {
 
     @BeforeEach
     public void setup() {
-        game = new Game();
+        game = new Game("Test");
     }
 
     @Test
@@ -124,20 +123,4 @@ class GameTest {
             rollHelper(13,10);
         });
     }
-
-    private void rollAStrike() {
-        game.roll(10);
-    }
-
-    private void rollASpare() {
-        game.roll(5);
-        game.roll(5);
-    }
-
-    private void rollHelper(int n, int pins) {
-        for (int i = 0; i < n; i++) {
-            game.roll(pins);
-        }
-    }
-
 }
