@@ -27,16 +27,14 @@ public class GameTextSerializer {
         }
         sb.append(formatName(game));
         sb.append(formatPinFallsAndScore(game));
-        System.out.println(sb);
         return sb.toString();
     }
 
     private String formatPinFallsAndScore(Game game) {
         StringBuilder pinfalls = new StringBuilder();
-        pinfalls.append(String.format("%-15s", "Pinfalls"));
-
+        pinfalls.append(String.format("\n%-15s", "Pinfalls"));
         StringBuilder scores = new StringBuilder();
-        scores.append(String.format("%-15s", "Score"));
+        scores.append(String.format("\n%-15s", "Score"));
 
         int score = 0;
         int firstRollInTurn = 0;
@@ -74,18 +72,15 @@ public class GameTextSerializer {
             firstRollInTurn += 2;
         }
         scores.append(String.format(" %-8d", scoreByFrame[turn]));
-
-        pinfalls.append("\n");
-        scores.append("\n");
         return pinfalls.toString() + scores.toString();
     }
 
     private static String formatName(Game game) {
-        return String.format("%-15s\n", game.getPlayerName());
+        return String.format("%-15s", game.getPlayerName());
     }
 
     public static String formatHeader() {
-        return String.format("%-15s %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-7d\n",
+        return String.format("%-15s %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-7d",
                 "Frame", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     }
 
