@@ -20,7 +20,7 @@ class GameTextSerializerTest extends AbstractGameTest {
     public void printsAnAllSparesGame() {
         rollHelper(21, 5);
         assertThat(
-                new GameTextSerializer(game).serialize(),
+                new GameTextSerializer(game).serialize(true),
                 is(allSpareGame)
         );
     }
@@ -29,7 +29,7 @@ class GameTextSerializerTest extends AbstractGameTest {
     public void printsAPerfectGame() {
         rollHelper(12, 10);
         assertThat(
-                new GameTextSerializer(game).serialize(),
+                new GameTextSerializer(game).serialize(true),
                 is(perfectGame)
         );
     }

@@ -21,6 +21,11 @@ public class BowlingApp {
 
         Map<String, Game> games = GameFileParser.readBowlingFile(file);
 
-        games.forEach((k,v)->System.out.println( k + ": " + v));
+        System.out.println(GameTextSerializer.formatHeader());
+        games.forEach(
+                (k, v) -> System.out.println(
+                        new GameTextSerializer(v).serialize()
+                )
+        );
     }
 }

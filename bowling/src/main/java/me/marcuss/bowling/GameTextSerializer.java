@@ -17,8 +17,14 @@ public class GameTextSerializer {
     }
 
     public String serialize() {
+        return serialize(false);
+    }
+
+    public String serialize(boolean header) {
         StringBuilder sb = new StringBuilder();
-        sb.append(formatHeader());
+        if (header) {
+            sb.append(formatHeader());
+        }
         sb.append(formatName(game));
         sb.append(formatPinFallsAndScore(game));
         System.out.println(sb);
@@ -78,7 +84,7 @@ public class GameTextSerializer {
         return String.format("%-15s\n", game.getPlayerName());
     }
 
-    private static String formatHeader() {
+    public static String formatHeader() {
         return String.format("%-15s %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-7d\n",
                 "Frame", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     }
