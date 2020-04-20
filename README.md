@@ -6,7 +6,7 @@ Games should be provided as an input file.
 The program runs from the command-line and take a text file as input.
 
 ## Usage
-`java -jar bowling.jar`
+`java -jar bowling1.0.jar testfile.txt`
 
 Jar can be found in bowling/target/bowling1.0.jar
 
